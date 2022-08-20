@@ -30,7 +30,7 @@ module.exports = () => {
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: 'JATE:Text Editor',
+        name: 'JATE: Text Editor',
         short_name: 'JATE',
         description: 'Edit Text on the GO!',
         background_color: '#225ca3',
@@ -51,12 +51,20 @@ module.exports = () => {
     module: {
       rules: [
         {
-          //test for css
-          //use
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
         },
         {
-          //test for js
-          //exclude node.modules
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            //are we supposed to use babel for this challenge?
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
         }
       ],
     },
