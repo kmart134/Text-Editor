@@ -28,3 +28,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // TODO: Implement asset caching
 registerRoute();
+//StaleWhileRevalidate
+//CacheableResponsePlugin
+
+//very similar to sw.js file in activity19, solved activity 20
